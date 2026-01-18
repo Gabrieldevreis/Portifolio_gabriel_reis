@@ -322,45 +322,38 @@ import { CommonModule } from '@angular/common';
 })
 export class AboutComponent {
   stats = [
-    { number: '5+', label: 'Anos de Experiência' },
-    { number: '50+', label: 'Projetos Concluídos' },
-    { number: '30+', label: 'Clientes Satisfeitos' },
+    { number: '3+', label: 'Anos de Experiência' },
+    { number: '10+', label: 'Projetos Concluídos' },
     { number: '100%', label: 'Dedicação' }
   ];
 
   technologies = [
     {
       name: 'Frontend',
-      items: ['Angular', 'React', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'SASS', 'Tailwind CSS']
+      items: ['Angular', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'SASS', 'Tailwind CSS']
     },
     {
       name: 'Backend',
-      items: ['Node.js', 'Express', 'NestJS', 'Python', 'Django', 'PostgreSQL', 'MongoDB']
+      items: ['Node.js', 'NestJS','PostgreSQL']
     },
     {
       name: 'Ferramentas',
-      items: ['Git', 'Docker', 'AWS', 'Firebase', 'Figma', 'VS Code', 'Postman']
+      items: ['Git', 'Docker','Figma', 'VS Code', 'Postman']
     }
   ];
 
   experiences = [
     {
-      period: '2022 - Presente',
-      title: 'Desenvolvedor Full Stack Sênior',
-      company: 'Tech Company',
-      description: 'Desenvolvimento de aplicações web escaláveis usando Angular e Node.js. Liderança técnica de equipe e implementação de melhores práticas.'
+      period: '2024 - Presente',
+      title: 'Desenvolvedor Júnior Angular',
+      company: 'Dynoix',
+      description: 'Desenvolvimento de aplicações web escaláveis usando Angular.'
     },
     {
-      period: '2020 - 2022',
+      period: '2025 - Presente',
       title: 'Desenvolvedor Full Stack',
-      company: 'Startup Inovadora',
-      description: 'Criação de MVPs e produtos digitais do zero. Trabalho direto com stakeholders e participação em decisões de arquitetura.'
+      company: 'Freelancer',
+      description: 'Desenvolvimento de sistemas usando Angular e NestJs.'
     },
-    {
-      period: '2018 - 2020',
-      title: 'Desenvolvedor Frontend',
-      company: 'Agência Digital',
-      description: 'Desenvolvimento de interfaces modernas e responsivas para diversos clientes. Foco em performance e experiência do usuário.'
-    }
   ];
 }

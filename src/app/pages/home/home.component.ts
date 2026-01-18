@@ -14,9 +14,9 @@ import { RouterModule } from '@angular/router';
             <div class="hero-text">
               <span class="greeting">Olá, eu sou</span>
               <h1 class="hero-title">
-                <span class="name">Seu Nome</span>
+                <span class="name">Gabriel Reis</span>
               </h1>
-              <p class="hero-subtitle">Desenvolvedor Full Stack & Designer</p>
+              <p class="hero-subtitle">Desenvolvedor Full Stack</p>
               <p class="hero-description">
                 Transformo ideias em experiências digitais excepcionais através de código limpo e design impactante.
               </p>
@@ -26,7 +26,7 @@ import { RouterModule } from '@angular/router';
               </div>
             </div>
             <div class="hero-visual">
-              <div class="visual-circle"></div>
+             
               <div class="visual-code">
                 <div class="code-line" *ngFor="let line of codeLines; let i = index" 
                      [style.animation-delay]="i * 0.1 + 's'">
@@ -36,9 +36,6 @@ import { RouterModule } from '@angular/router';
             </div>
           </div>
         </div>
-        <div class="scroll-indicator">
-          <span></span>
-        </div>
       </section>
 
       <section class="skills">
@@ -46,7 +43,7 @@ import { RouterModule } from '@angular/router';
           <h2 class="section-title">Habilidades</h2>
           <div class="skills-grid">
             <div class="skill-card" *ngFor="let skill of skills">
-              <div class="skill-icon">{{ skill.icon }}</div>
+              <div class="skill-icon" [innerHTML]="skill.icon">{{ skill.icon }}</div>
               <h3>{{ skill.name }}</h3>
               <p>{{ skill.description }}</p>
             </div>
@@ -218,11 +215,12 @@ import { RouterModule } from '@angular/router';
     }
 
     .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+  position: static;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
 
     .scroll-indicator span {
       display: block;
@@ -296,6 +294,7 @@ import { RouterModule } from '@angular/router';
     .skill-icon {
       font-size: 3rem;
       margin-bottom: 1rem;
+      color: var(--color-accent); 
     }
 
     .skill-card h3 {
@@ -387,30 +386,30 @@ export class HomeComponent implements OnInit {
 
   codeLines = [
     'const developer = {',
-    '  name: "Seu Nome",',
-    '  skills: ["Angular", "React"],',
+    '  name: "Gabriel Reis",',
+    '  skills: ["Angular", "NestJs"],',
     '  passion: "Code & Design"',
     '};'
   ];
 
   skills = [
     {
-      icon: '💻',
+      icon: '<i class="fa-solid fa-laptop"></i>',
       name: 'Desenvolvimento Web',
       description: 'Criação de aplicações web modernas com as melhores tecnologias do mercado.'
     },
     {
-      icon: '📱',
+      icon: '<i class="fa-solid fa-mobile"></i>',
       name: 'Mobile First',
       description: 'Interfaces responsivas que funcionam perfeitamente em qualquer dispositivo.'
     },
     {
-      icon: '🎨',
+      icon: '<i class="fa-solid fa-palette"></i>',
       name: 'UI/UX Design',
       description: 'Design intuitivo e atraente que proporciona experiências memoráveis.'
     },
     {
-      icon: '⚡',
+      icon: '<i class="fa-solid fa-gauge-simple-high"></i>',
       name: 'Performance',
       description: 'Otimização de código para garantir máxima velocidade e eficiência.'
     }
