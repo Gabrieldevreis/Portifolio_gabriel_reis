@@ -1,0 +1,442 @@
+<div class="classic-portfolio">
+
+  <!-- Toast de feedback global -->
+  <div
+    *ngIf="toast"
+    class="toast"
+    [class.toast--success]="toast.type === 'success'"
+    [class.toast--error]="toast.type === 'error'"
+    role="alert"
+    aria-live="assertive"
+  >
+    {{ toast.message }}
+  </div>
+
+  <nav id="desktop-nav">
+    <a href="#profile" class="logo">Gabriel Reis</a>
+    <div>
+      <ul class="nav-links">
+        <li><a href="#about" [class.nav-link-active]="activeSection === 'about'">Sobre</a></li>
+        <li><a href="#experience" [class.nav-link-active]="activeSection === 'experience'">Habilidades</a></li>
+        <li><a href="#projects" [class.nav-link-active]="activeSection === 'projects'">Projetos</a></li>
+        <li><a href="#contact" [class.nav-link-active]="activeSection === 'contact'">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <nav id="hamburguer-nav">
+    <a href="#profile" class="logo">Gabriel Reis</a>
+    <div class="hamburguer-menu">
+      <div
+        class="hamburguer-icon"
+        [class.open]="menuOpen"
+        (click)="toggleMenu()"
+        (keyup.enter)="toggleMenu()"
+        tabindex="0"
+        role="button"
+        aria-label="Abrir menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="menu-links" [class.open]="menuOpen">
+        <li><a href="#about" (click)="toggleMenu()">Sobre</a></li>
+        <li><a href="#experience" (click)="toggleMenu()">Habilidades</a></li>
+        <li><a href="#projects" (click)="toggleMenu()">Projetos</a></li>
+        <li><a href="#contact" (click)="toggleMenu()">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section
+    id="profile"
+    (mousemove)="onProfileMouseMove($event)"
+    (mouseleave)="onProfileMouseLeave()"
+  >
+    <div class="profile-hero">
+      <div class="section_pic-container profile-pic-shell" appReveal>
+        <span class="profile-photo-blob" aria-hidden="true"></span>
+        <img ngSrc="assets/my-portfolio/images.jpeg" alt="Gabriel Reis" width="400" height="400" priority />
+      </div>
+      <div class="section_text profile-intro section-intro-centered" appReveal="0.18s">
+        <p class="section_text_p1">Olá, eu sou</p>
+        <h1 class="title">Gabriel Reis</h1>
+        <p class="section_text_p2">Desenvolvedor Web</p>
+        <div class="btn-container profile-actions">
+          <button type="button" class="btn btn-secondary" (click)="openCv()">Baixar CV</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="scrollTo('contact')"
+            (mousemove)="onMagneticMove($event)"
+            (mouseleave)="onMagneticLeave($event)"
+          >
+            Informações de contato
+          </button>
+        </div>
+        <div id="socials-container" class="profile-socials">
+          <img
+            ngSrc="assets/my-portfolio/linkedin.png"
+            alt="LinkedIn"
+            class="icon social-icon"
+            width="32"
+            height="32"
+            (click)="openUrl('https://www.linkedin.com/in/gabrieldevreis/')"
+          />
+          <img
+            ngSrc="assets/my-portfolio/github.png"
+            alt="GitHub"
+            class="icon social-icon"
+            width="32"
+            height="32"
+            (click)="openUrl('https://github.com/Gabrieldevreis/')"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicador de scroll animado -->
+    <div class="scroll-hint" [class.scroll-hint--hidden]="!scrollHintVisible" aria-hidden="true">
+      <span class="scroll-hint-label">Rolar</span>
+      <span class="scroll-hint-arrow">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 3v14M4 11l6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-intro-centered" appReveal>
+      <p class="section_text_p1 about-eyebrow">
+        <span class="about-eyebrow-inner">
+          <span class="about-eyebrow-line" aria-hidden="true"></span>
+          <span>Saiba mais</span>
+        </span>
+      </p>
+      <h1 class="title about-title">Sobre</h1>
+    </div>
+    <div class="section-container">
+      <div class="section_pic-container section_pic-container--about" appReveal="0.12s">
+        <img
+          src="assets/my-portfolio/imagem-2.jpeg"
+          alt="Gabriel Reis"
+          width="400"
+          height="400"
+          loading="lazy"
+          decoding="async"
+          class="about-photo"
+        />
+      </div>
+      <div class="about-details-container" appReveal="0.24s">
+        <div class="about-containers">
+          <div class="details-container about-card">
+            <span class="about-card-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+              </svg>
+            </span>
+            <h3>Experiência</h3>
+            <p>1+ anos <br />Desenvolvedor front-end</p>
+          </div>
+          <div class="details-container about-card">
+            <span class="about-card-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c3 2 9 2 12 0v-5" />
+              </svg>
+            </span>
+            <h3>Formação</h3>
+            <p>Análise e Desenvolvimento de Sistemas</p>
+          </div>
+        </div>
+        <div class="text-container about-bio">
+          <p>
+            Sou apaixonado por tecnologia e adoro transformar ideias em <strong>soluções práticas</strong>. Acredito que o
+            <strong>simples</strong>, quando bem feito, vale mais do que o complexo mal executado. Com dedicação e esforço,
+            me mantenho atualizado em <strong>HTML, CSS, JavaScript, React e Angular</strong>, sempre buscando criar
+            <strong>projetos eficientes</strong> e de qualidade.
+          </p>
+          <p>
+            Gosto de aprender continuamente e encaro cada desafio como oportunidade de crescimento. Meu foco é entregar
+            <strong>resultados claros</strong> e impactantes, com <strong>atenção aos detalhes</strong>.
+          </p>
+        </div>
+        <div class="about-cv-wrap">
+          <button type="button" class="btn btn-secondary btn-about-cv" (click)="openCv()">Baixar CV</button>
+        </div>
+      </div>
+    </div>
+    <img
+      ngSrc="assets/my-portfolio/arrow.png"
+      alt=""
+      class="icon arrow"
+      width="32"
+      height="32"
+      (click)="scrollTo('experience')"
+    />
+  </section>
+
+  <section class="skills skills-section" id="experience">
+    <header class="skills-header section-intro-centered" appReveal>
+      <p class="section_text_p1 skills-eyebrow">Conheça minhas</p>
+      <h1 class="title skills-title">Habilidades</h1>
+      <p class="skills-intro">
+        Focado em criar interfaces modernas e escaláveis utilizando as tecnologias mais atuais do mercado. Clique em uma
+        tecnologia para ver projetos em que ela aparece.
+      </p>
+    </header>
+
+    <div class="skills-groups" appReveal="0.2s">
+      <div class="skill-group" *ngFor="let group of skillGroups; let gi = index">
+        <h2 class="skill-group-title">{{ group.label }}</h2>
+        <ul class="skill-group-items">
+          <li *ngFor="let tech of group.items; let ti = index">
+            <button
+              type="button"
+              class="skill-card"
+              [style.--skill-enter-delay]="skillEnterDelay(gi, ti)"
+              (click)="filterProjectsByTech(tech.id)"
+              [attr.aria-label]="
+                'Ver projetos com ' + tech.name + '. ' + tech.proficiency + ': ' + tech.proficiencyDetail
+              "
+            >
+              <span class="skill-card-visual">
+                <img
+                  [ngSrc]="tech.src"
+                  [alt]="tech.alt"
+                  class="skill-card-img"
+                  width="64"
+                  height="64"
+                />
+              </span>
+              <span class="skill-card-name">{{ tech.name }}</span>
+              <span class="skill-card-tooltip" aria-hidden="true">
+                <span class="skill-card-tooltip-level">{{ tech.proficiency }}</span>
+                <span class="skill-card-tooltip-detail">{{ tech.proficiencyDetail }}</span>
+              </span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <img
+      ngSrc="assets/my-portfolio/arrow.png"
+      alt=""
+      class="icon arrow"
+      width="32"
+      height="32"
+      (click)="scrollTo('projects')"
+    />
+  </section>
+
+  <section id="projects">
+    <div class="section-intro-centered" appReveal>
+      <p class="section_text_p1">Projetos recentes</p>
+      <h1 class="title">Projetos</h1>
+    </div>
+    <div class="projects-filter-bar" *ngIf="projectTechFilter">
+      <p class="projects-filter-text">
+        Mostrando projetos que usam <strong>{{ projectTechFilterLabel }}</strong>.
+        <button type="button" class="projects-filter-clear" (click)="clearProjectTechFilter()">Ver todos</button>
+      </p>
+    </div>
+    <p class="projects-empty" *ngIf="projectTechFilter && filteredProjects.length === 0">
+      Ainda não há projetos públicos listados com {{ projectTechFilterLabel }} neste portfólio.
+      <button type="button" class="projects-filter-clear" (click)="clearProjectTechFilter()">Ver todos os projetos</button>
+    </p>
+    <div class="about-containers project-cards">
+      <div
+        class="experience-details-container"
+        *ngFor="let project of filteredProjects; let pi = index"
+        [appReveal]="projectRevealDelay(pi)"
+      >
+        <div class="details-container color-container project-card">
+          <div
+            class="project-card-media"
+            role="img"
+            [attr.aria-label]="'Pré-visualização: ' + project.title"
+            [style.--project-cover]="'url(' + project.image + ')'"
+          >
+            <div class="project-card-media-bg" aria-hidden="true"></div>
+            <div class="project-card-media-overlay" aria-hidden="true"></div>
+            <div class="project-card-media-brand" aria-hidden="true"></div>
+            <p class="project-card-hover-hint" aria-hidden="true">Ver demonstração</p>
+          </div>
+          <div class="project-card-body">
+            <h2 class="experience-sub-title project-title">{{ project.title }}</h2>
+            <p class="project-description">{{ project.description }}</p>
+            <ul class="project-stack" [attr.aria-label]="'Stack de ' + project.title">
+              <li *ngFor="let tech of project.technologies" class="project-stack-tag">{{ techLabel(tech) }}</li>
+            </ul>
+            <div class="btn-container project-card-actions">
+              <button type="button" class="btn project-btn project-btn--secondary" (click)="openUrl(project.github)">
+                GitHub
+              </button>
+              <button type="button" class="btn project-btn project-btn--primary" (click)="openUrl(project.demo)">
+                Ver ao vivo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img
+      ngSrc="assets/my-portfolio/arrow.png"
+      alt=""
+      class="icon arrow"
+      width="32"
+      height="32"
+      (click)="scrollTo('contact')"
+    />
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="contact-section-blob" aria-hidden="true"></div>
+    <div class="contact-section-inner" appReveal>
+      <header class="contact-hero">
+        <div class="contact-hero-avatar-wrap">
+          <img
+            ngSrc="assets/my-portfolio/images.jpeg"
+            alt="Gabriel Reis"
+            class="contact-hero-avatar"
+            width="80"
+            height="80"
+          />
+        </div>
+        <div class="contact-hero-text">
+          <p class="section_text_p1 contact-hero-eyebrow">Entre em contato</p>
+          <h1 class="title contact-hero-title">Vamos construir algo incrível juntos?</h1>
+          <p class="contact-hero-tagline">
+            Disponível para novos projetos e parcerias. Tem alguma dúvida ou proposta? Mande uma mensagem — respondo o
+            mais rápido possível.
+          </p>
+        </div>
+      </header>
+
+      <div class="contact-layout">
+        <div class="contact-quick">
+          <h2 class="contact-block-title">Contato direto</h2>
+          <p class="contact-block-hint">Cada opção abre a ação certa: e-mail no seu app de correio ou LinkedIn numa nova aba.</p>
+          <div class="contact-action-buttons">
+            <a class="contact-tile contact-tile--email" [href]="mailtoLink" rel="noopener noreferrer">
+              <span class="contact-tile-icon-wrap" aria-hidden="true">
+                <img ngSrc="assets/my-portfolio/email.png" alt="" class="contact-tile-icon" width="28" height="28" />
+              </span>
+              <span class="contact-tile-body">
+                <span class="contact-tile-label">E-mail</span>
+                <span class="contact-tile-value">{{ emailAddress }}</span>
+              </span>
+            </a>
+            <a
+              class="contact-tile contact-tile--linkedin"
+              [href]="linkedinProfileUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="contact-tile-icon-wrap" aria-hidden="true">
+                <img ngSrc="assets/my-portfolio/linkedin.png" alt="" class="contact-tile-icon" width="28" height="28" />
+              </span>
+              <span class="contact-tile-body">
+                <span class="contact-tile-label">LinkedIn</span>
+                <span class="contact-tile-value">Ver perfil profissional</span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <h2 class="contact-block-title">Mensagem rápida</h2>
+          <p class="contact-block-hint">
+            <ng-container *ngIf="contactFormAction">
+              O envio é feito de forma segura; você não precisa copiar nada para outro aplicativo.
+            </ng-container>
+            <ng-container *ngIf="!contactFormAction">
+              Ao enviar, o seu aplicativo de e-mail abre com nome, endereço e mensagem já preenchidos.
+            </ng-container>
+          </p>
+          <form
+            class="contact-form"
+            [attr.action]="contactFormAction || null"
+            method="POST"
+            (submit)="onContactFormSubmit($event)"
+          >
+            <input type="hidden" name="_subject" value="Contato pelo portfólio — Gabriel Reis" />
+            <div class="contact-form-field">
+              <label for="contact-name">Nome</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" required placeholder="Seu nome" />
+            </div>
+            <div class="contact-form-field">
+              <label for="contact-email">E-mail</label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                placeholder="voce@exemplo.com"
+              />
+            </div>
+            <div class="contact-form-field">
+              <label for="contact-message">Mensagem</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                rows="4"
+                required
+                placeholder="Conte sobre o projeto, prazo ou ideia..."
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary contact-form-submit"
+              [class.loading]="formSubmitting"
+              [disabled]="formSubmitting"
+              (mousemove)="!formSubmitting && onMagneticMove($event)"
+              (mouseleave)="!formSubmitting && onMagneticLeave($event)"
+            >
+              <span class="btn-label">Enviar mensagem</span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="Navegação do rodapé">
+      <div class="nav-links-container">
+        <ul class="nav-links footer-nav-links">
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#experience">Habilidades</a></li>
+          <li><a href="#projects">Projetos</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="footer-social" aria-label="Redes sociais">
+      <a
+        class="footer-social-link"
+        [href]="linkedinProfileUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn de Gabriel Reis"
+      >
+        <img ngSrc="assets/my-portfolio/linkedin.png" alt="" width="22" height="22" />
+      </a>
+      <a
+        class="footer-social-link"
+        [href]="githubProfileUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub de Gabriel Reis"
+      >
+        <img ngSrc="assets/my-portfolio/github.png" alt="" width="22" height="22" />
+      </a>
+    </div>
+    <p class="footer-copyright">Copyright &#169; 2026 Gabriel Reis. Todos os direitos reservados.</p>
+  </footer>
+</div>
